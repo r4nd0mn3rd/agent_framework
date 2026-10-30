@@ -9,3 +9,6 @@
 # OS / editor
 .DS_Store
 *.swp
+node_modules/
+packages/*/dist/
+packages/*/node_modules/
