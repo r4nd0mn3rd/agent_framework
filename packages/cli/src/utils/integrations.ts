@@ -1,0 +1,104 @@
+import { mkdirSync, writeFileSync, existsSync } from 'node:fs';
+import { join } from 'node:path';
+
+export type Integration = 'claude' | 'opencode' | 'vibe' | 'none';
+
+export async function askIntegration(): Promise<Integration> {
+  const prompts = await import('prompts');
+  const res = await prompts.default({
+    type: 'select',
+    name: 'value',
+    message: 'Which AI agent integration should Pocket Dev set up?',
+    choices: [
+      { title: 'Claude (Claude Code)', value: 'claude' },
+      { title: 'OpenCode (TUI)', value: 'opencode' },
+      { title: 'Mistral Vibe', value: 'vibe' },
+      { title: 'None (skip)', value: 'none' }
+    ]
+  });
+  return (res.value ?? 'none') as Integration;
+}
+
+function ensureDir(p: string) { if (!existsSync(p)) mkdirSync(p, { recursive: true }); }
+
+export function setupIntegration(root: string, integration: Integration): string[] {
+  const created: string[] = [];
+  if (integration === 'claude') {
+    ensureDir(join(root, '.claude', 'commands'));
+    writeFileSync(join(root, '.claude', 'commands', 'framework.md'), CLAUDE_CMD, 'utf8');
+    created.push('.claude/commands/framework.md');
+    if (!existsSync(join(root, 'CLAUDE.md'))) {
+      writeFileSync(join(root, 'CLAUDE.md'), CLAUDE_MD, 'utf8');
+      created.push('CLAUDE.md');
+    }
+  } else if (integration === 'opencode') {
+    ensureDir(join(root, '.opencode', 'skills', 'pocket-dev-framework-manager'));
+    ensureDir(join(root, '.opencode', 'commands'));
+    writeFileSync(join(root, '.opencode', 'skills', 'pocket-dev-framework-manager', 'SKILL.md'), OPENCODE_SKILL, 'utf8');
+    writeFileSync(join(root, '.opencode', 'commands', 'framework.md'), OPENCODE_CMD, 'utf8');
+    created.push('.opencode/skills/pocket-dev-framework-manager/SKILL.md');
+    created.push('.opencode/commands/framework.md');
+  } else if (integration === 'vibe') {
+    ensureDir(join(root, '.vibe', 'skills', 'pocket-dev-framework-manager'));
+    writeFileSync(join(root, '.vibe', 'skills', 'pocket-dev-framework-manager', 'SKILL.md'), VIBE_SKILL, 'utf8');
+    created.push('.vibe/skills/pocket-dev-framework-manager/SKILL.md');
+  }
+  return created;
+}
+
+export function printUsage(integration: Integration): void {
+  console.log('\n' + '='.repeat(60));
+  console.log('Pocket Dev — Usage Instructions');
+  console.log('='.repeat(60));
+  console.log('\nCore commands:');
+  console.log('  pocket-dev init [target]      Initialize framework (rerun-safe)');
+  console.log('  pocket-dev status             Show project status summary');
+  console.log('  pocket-dev validate           Validate framework structure');
+  console.log('  pocket-dev deps               Check dependencies');
+  console.log('  pocket-dev board              Launch agile board (http://localhost:4173)');
+  console.log('\nProject workflow:');
+  console.log('  1. Write an idea in Docs/00-idea/idea.md');
+  console.log('  2. Run your AI agent (claude / opencode / vibe) and invoke /framework');
+  console.log('  3. Follow phases 0-5; track tasks on the board');
+  console.log('  4. Run pocket-dev validate before each gate');
+  if (integration === 'claude') {
+    console.log('\nClaude Code:');
+    console.log('  - Open project in Claude Code');
+    console.log('  - Run: /framework');
+    console.log('  - Command file: .claude/commands/framework.md');
+  } else if (integration === 'opencode') {
+    console.log('\nOpenCode:');
+    console.log('  - Run: opencode');
+    console.log('  - In TUI: /framework');
+    console.log('  - Skill: .opencode/skills/pocket-dev-framework-manager/SKILL.md');
+  } else if (integration === 'vibe') {
+    console.log('\nMistral Vibe:');
+    console.log('  - Skill installed at .vibe/skills/pocket-dev-framework-manager/SKILL.md');
+    console.log('  - Invoke via vibe skill loader');
+  }
+  console.log('\nDocs: GETTING-STARTED.md, 07-examples/pocket-dev-module/\n');
+}
+
+const CLAUDE_CMD = `# Pocket Dev Framework
+
+Load and follow the Solo Agent Development Framework. Read AGENTS.md and 00-constitution/constitution.md, then help the user drive a feature through phases 0-5.
+
+Use pocket-dev status / pocket-dev validate / pocket-dev board as needed.
+`;
+
+const CLAUDE_MD = `# Pocket Dev Project
+
+This project uses the Solo Agent Development Framework. See 00-constitution/constitution.md and GETTING-STARTED.md.
+
+Run \`pocket-dev status\` for overview, \`pocket-dev board\` for the agile board.
+`;
+
+const OPENCODE_SKILL = `# Pocket Dev Framework Manager
+
+Load the framework and assist the solo developer through phases 0-5.
+Read constitution, methodology, and templates. Use pocket-dev CLI for status/validate/board.
+`;
+
+const OPENCODE_CMD = CLAUDE_CMD;
+
+const VIBE_SKILL = OPENCODE_SKILL;

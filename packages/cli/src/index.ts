@@ -14,6 +14,7 @@ program
   .command('init [target]')
   .description('Initialize the framework in a target directory')
   .option('-y, --yes', 'Skip confirmation prompts')
+  .option('-i, --integration <name>', 'Integration target: claude, opencode, vibe, or none')
   .action(async (target, opts) => {
     const { runInit } = await import('./commands/init.js');
     await runInit(target ?? process.cwd(), opts);
