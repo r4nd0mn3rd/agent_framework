@@ -1,0 +1,34 @@
+{
+  "name": "solo-agent-development-framework",
+  "version": "1.0.0",
+  "description": "Solo Agent Development Framework: plan, design, specify, and implement apps from idea to production with AI agents (OpenCode TUI integration included).",
+  "bin": {
+    "install-agent-framework": "./install.sh"
+  },
+  "files": [
+    "00-constitution",
+    "01-governance",
+    "02-methodology",
+    "03-standards",
+    "04-templates",
+    "05-checklists",
+    "06-automation",
+    "07-examples",
+    ".opencode",
+    ".framework/state.json",
+    "README.md",
+    "GETTING-STARTED.md",
+    "SUMMARY.md",
+    "LICENSE",
+    "install.sh"
+  ],
+  "keywords": [
+    "agent",
+    "framework",
+    "opencode",
+    "specification",
+    "development-process"
+  ],
+  "license": "MIT",
+  "author": "Thomas Jay"
+}
