@@ -1,19 +1,71 @@
-# Solo Agent Development Framework
+# Pocket Dev — Solo Agent Development Framework
 
 > **Framework Version**: 1.0.0
-> **Last Updated**: 2026-10-29
+> **Package**: `pocket-dev`
 > **Status**: Active
 
-## Purpose
+A framework and toolchain that lets **one developer plus AI agents** take a
+product from idea to production-ready code — with standardized artifacts,
+quality gates, and a live Kanban board.
 
-This framework enables **a single developer working with AI agents** to **completely plan, design, specify, and implement** an application from idea to production-ready code.
+## Why Pocket Dev
 
-It provides:
-- **Complete process coverage**: Discovery → Specification → Design → Implementation → Verification
-- **Standardized artifacts**: Every deliverable has defined structure, quality criteria, and review gates
-- **Agent-friendly instructions**: Clear, unambiguous tasks that agents can execute independently
-- **Quality gates**: Objective checkpoints that must be passed before proceeding
-- **Reusable patterns**: Proven approaches for common problems
+- **End-to-end coverage**: Discovery → Specification → Design →
+  Implementation → Verification.
+- **Agent-friendly**: unambiguous tasks agents can execute independently.
+- **Quality gates**: objective checkpoints before any phase proceeds.
+- **Reusable patterns**: proven approaches for common problems.
+- **CLI + board**: `pocket-dev` commands and an interactive TypeScript
+  Kanban board.
+
+## Quick Start
+
+Install dependencies and build:
+
+```bash
+npm install
+npm run build
+```
+
+Run the framework checker:
+
+```bash
+npm run pocket-dev -- validate   # or: node packages/cli/dist/index.js validate
+```
+
+Serve the Kanban board:
+
+```bash
+node packages/cli/dist/index.js board --open
+```
+
+Initialize agent integration (Claude / OpenCode / Vibe):
+
+```bash
+node packages/cli/dist/index.js init            # interactive
+node packages/cli/dist/index.js init --integration claude
+```
+
+## Pocket Dev CLI
+
+See `docs/POCKET-DEV.md` for the full reference. Commands:
+
+| Command | Purpose |
+|---------|---------|
+| `pocket-dev init` | Scaffold integration for Claude, OpenCode, or Vibe |
+| `pocket-dev status` | Project name, phase, and task counts |
+| `pocket-dev validate` | Run framework consistency checks |
+| `pocket-dev deps` | Check build/test tooling availability |
+| `pocket-dev board` | Serve the interactive Kanban board |
+
+## Kanban Board
+
+![Kanban board](docs/assets/kanban-board.png)
+
+Tasks are loaded from `.framework/state.json`; when empty the board falls back
+to 26 bundled demo tickets across the 6 phases. Tiles are grouped by status
+(Pending, In Progress, Blocked, Completed, Cancelled). Click a tile for open
+items, next steps, and action buttons (Start, Continue, move to next status).
 
 ## Framework Structure
 
@@ -22,178 +74,70 @@ agent_framework/
 ├── README.md
 ├── GETTING-STARTED.md
 ├── SUMMARY.md
-├── LICENSE
-├── install.sh
-├── package.json
-│
-├── .opencode/                      # OpenCode TUI integration
-│   ├── commands/
-│   │   └── framework.md           # /framework slash command
-│   └── skills/
-│       └── home-dash-framework-manager/
-│           └── SKILL.md            # Framework manager skill
-│
-├── .framework/                     # Per-project state (gitignored)
-│   ├── state.json
-│   ├── tasks/
-│   └── sessions/
-│
-├── specs/                          # Feature artifacts (per feature)
-│
+├── docs/POCKET-DEV.md          # CLI + board guide
+├── docs/assets/                # screenshots
+├── packages/                   # CLI, board, shared models
 ├── 00-constitution/
-│   └── constitution.md             # Core principles
-│
 ├── 01-governance/
-│   ├── decision-process.md
-│   └── cross-dependencies.md       # Cross-dependency management
-│
 ├── 02-methodology/
-│   ├── process-overview.md         # 6-phase, 6-gate workflow
-│   └── checkpoints/
-│       └── gate-00.md              # Gate definitions
-│
 ├── 03-standards/
-│   ├── README.md                   # Standards index
-│   ├── swift/coding-standard.md
-│   ├── python/coding-standard.md
-│   ├── javascript-typescript/coding-standard.md
-│   ├── java-kotlin/coding-standard.md
-│   ├── go/coding-standard.md
-│   ├── rust/coding-standard.md
-│   ├── csharp/coding-standard.md
-│   └── ui/design-standard.md       # UI design standard
-│
 ├── 04-templates/
-│   └── spec-template.md            # Feature specification template
-│
 ├── 05-checklists/
-│   ├── gate-02-checklist.md
-│   └── cross-dependency-checklist.md
-│
 ├── 06-automation/
-│   └── agents/
-│       └── spec-agent.md
-│
-└── skill/                          # Original Vibe CLI skill package
-    ├── SKILL.md
-    ├── README.md
-    └── INSTALL.md
+├── 07-examples/pocket-dev-module/
+└── skill/
 ```
 
+## How to Use
 
+### New Features
 
-## Installation
+1. Start with ideation (`02-methodology/`)
+2. Run discovery checklist
+3. Fill spec template (`04-templates/spec-template.md`)
+4. Pass Gate 0 (`02-methodology/checkpoints/gate-00.md`)
+5. Progress through phases and gates
 
-### OpenCode (TUI) — recommended
+### Agents
 
-1. Clone this repository into your project (or run the installer):
-   ```bash
-   git clone https://github.com/r4nd0mn3rd/agent_framework.git
-   cd agent_framework
-   ./install.sh /path/to/your/project
-   ```
-2. Open your project with OpenCode:
-   ```bash
-   cd /path/to/your/project
-   opencode
-   ```
-3. In the TUI, invoke the framework:
-   ```
-   /framework
-   ```
+1. Load relevant phase docs from `02-methodology/`
+2. Use templates from `04-templates/`
+3. Validate against `05-checklists/`
+4. Follow `03-standards/`
+5. Document decisions per `01-governance/`
 
-The installer copies the framework docs, the OpenCode skill, and the `/framework`
-slash command, and initializes `.framework/` state storage. Existing state and
-specs are never overwritten.
-
-### Manual install
-
-Copy these into your project root:
-- `00-constitution/`, `01-governance/`, `02-methodology/`, `03-standards/`,
-  `04-templates/`, `05-checklists/`, `06-automation/`
-- `.opencode/skills/home-dash-framework-manager/`
-- `.opencode/commands/framework.md`
-- Create `.framework/{tasks,sessions}/` and `.framework/state.json`
-
-Then run `opencode` and use `/framework`.
-
----
-## How to Use This Framework
-
-### For New Features
-
-1. **Start with Ideation**: Use `02-methodology/phases/00-ideation/` to refine your idea
-2. **Run Discovery**: Execute the discovery phase checklist
-3. **Create Specification**: Fill out the spec template from `04-templates/`
-4. **Pass Gate 0**: Verify against `02-methodology/checkpoints/gate-00.md`
-5. **Proceed through phases**: Each phase has its own checklist and gate
-
-### For Agents
-
-Agents should:
-1. Load the relevant phase documentation from `02-methodology/phases/`
-2. Use templates from `04-templates/` for all deliverables
-3. Validate against checklists in `05-checklists/`
-4. Follow standards in `03-standards/`
-5. Document decisions in accordance with `01-governance/`
-
-### Quick Start
+## Installation (Framework)
 
 ```bash
-# Navigate to the framework
-cd solo-agent-framework
-
-# Review the constitution first
-cat 00-constitution/constitution.md
-
-# Start with ideation phase
-open 02-methodology/phases/00-ideation/README.md
+git clone https://github.com/r4nd0mn3rd/agent_framework.git
+cd agent_framework
+./install.sh /path/to/your/project
 ```
 
-## Framework Evolution
+Manual install: copy `00-constitution/`, `01-governance/`, `02-methodology/`,
+`03-standards/`, `04-templates/`, `05-checklists/`, `06-automation/`, and
+`.opencode/`, then create `.framework/{tasks,sessions}/` + `state.json`.
 
-This framework evolves through:
-1. **Lessons learned** from each completed feature
-2. **Agent feedback** on clarity and completeness
-3. **Standard updates** as technologies change
+## Key Documents
 
-Changes follow the process defined in `01-governance/changes.md`.
-
-## Relationship to Project Constitution
-
-This framework **extends and operationalizes** the Solo Agent Development Framework constitution. Where they conflict:
-1. This framework's constitution (`00-constitution/constitution.md`) takes precedence
-2. It incorporates all existing constitution principles
-3. It adds detailed operational guidance
-
-The project constitution at `.specify/memory/constitution.md` remains in effect but is superseded by this framework's constitution for new work.
+| Purpose | Document |
+|---------|----------|
+| Getting started | `GETTING-STARTED.md` |
+| Framework summary | `SUMMARY.md` |
+| CLI & board | `docs/POCKET-DEV.md` |
+| Constitution | `00-constitution/constitution.md` |
+| Process overview | `02-methodology/process-overview.md` |
+| Spec template | `04-templates/spec-template.md` |
+| Example module | `07-examples/pocket-dev-module/` |
 
 ## Success Metrics
 
-The framework is successful when:
-- A single developer + agents can complete a feature with **zero ambiguity**
-- All artifacts meet **defined quality criteria** without manual review
-- The process is **repeatable** across different features
-- **Quality gates** catch issues before they propagate
-- The time from idea to production is **predictable and minimized**
+- A solo developer + agents complete a feature with zero ambiguity
+- All artifacts meet defined quality criteria without manual review
+- The process is repeatable across features
+- Quality gates catch issues before they propagate
 
----
+## Relationship to Constitution
 
-## Index of Key Documents
-
-| Purpose | Document | Location |
-|---------|----------|----------|
-| Core principles | Constitution | `00-constitution/constitution.md` |
-| Decision process | How decisions are made | `01-governance/decision-process.md` |
-| Agent roles | What agents do | `01-governance/roles.md` |
-| End-to-end process | Complete workflow | `02-methodology/process-overview.md` |
-| Phase details | Each phase's requirements | `02-methodology/phases/*/` |
-| Quality gates | Checkpoint criteria | `02-methodology/checkpoints/*/` |
-| Swift standards | Language conventions | `03-standards/swift/*` |
-| Language standards | Python, JS/TS, Java/Kotlin, Go, Rust, C# | `03-standards/*/coding-standard.md` |
-| UI design standard | UI specification & design | `03-standards/ui/design-standard.md` |
-| Cross-dependencies | Dependency management | `01-governance/cross-dependencies.md` |
-| Architecture | Design patterns | `03-standards/architecture/*` |
-| Templates | Reusable templates | `04-templates/*` |
-| Checklists | Quality checks | `05-checklists/*` |
-| Agent instructions | How agents operate | `06-automation/agents/*` |
+This framework extends the Solo Agent Development Framework constitution.
+`00-constitution/constitution.md` takes precedence on conflict.
