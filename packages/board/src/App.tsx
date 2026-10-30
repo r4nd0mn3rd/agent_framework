@@ -27,7 +27,7 @@ export function App(): React.ReactElement {
   useEffect(() => {
     fetch('/tasks.json')
       .then(r => r.json())
-      .then((data: Task[]) => { setTasks(data); setLoading(false); })
+      .then((data: Task[]) => { setTasks(Array.isArray(data)&&data.length?data:SAMPLE); setLoading(false); })
       .catch(() => { setTasks(SAMPLE); setLoading(false); });
   }, []);
 

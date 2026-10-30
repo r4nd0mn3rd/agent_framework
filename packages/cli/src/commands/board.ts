@@ -32,7 +32,7 @@ export async function runBoard(root: string, opts: { port?: string; open?: boole
     const url = (req.url ?? '/').split('?')[0];
     if (url === '/tasks.json') {
       const state = loadState(root);
-      const tasks = (state?.tasks ?? []).map(t => ({
+      const stateTasks = (state?.tasks ?? []).map(t => ({
         id: t.id,
         name: t.name,
         description: t.description,
@@ -46,6 +46,13 @@ export async function runBoard(root: string, opts: { port?: string; open?: boole
         estimatedHours: t.estimatedHours,
         actualHours: t.actualHours
       }));
+      let tasks = stateTasks;
+      if (!tasks.length) {
+        const demoPath = join(distDir, 'tasks.json');
+        if (existsSync(demoPath)) {
+          try { tasks = JSON.parse(readFileSync(demoPath, 'utf8')); } catch { tasks = []; }
+        }
+      }
       res.setHeader('Content-Type', 'application/json');
       res.end(JSON.stringify(tasks));
       return;
