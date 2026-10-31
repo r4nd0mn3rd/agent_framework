@@ -1,4 +1,5 @@
 import { join, basename, resolve } from 'node:path';
+import { cpSync, existsSync } from 'node:fs';
 import chalk from 'chalk';
 import ora from 'ora';
 import { ensureFrameworkDirs, defaultState, saveState, loadState } from '../utils/state.js';
@@ -6,8 +7,18 @@ import { checkDependencies, printDeps, allRequiredPresent } from '../utils/deps.
 import { askIntegration, setupIntegration, printUsage, type Integration } from '../utils/integrations.js';
 
 export async function runInit(target: string, opts: { yes?: boolean; integration?: string }): Promise<void> {
+  const __dirname = new URL('.', import.meta.url).pathname;
+  const sourceRoot = join(__dirname, '..', '..', '..', '..');
+  const frameworkDirs = ['00-constitution', '01-governance', '02-methodology', '03-standards', '04-templates', '05-checklists', '06-automation', '07-examples'];
   const spinner = ora('Initializing Pocket Dev framework...').start();
   ensureFrameworkDirs(target);
+  for (const d of frameworkDirs) {
+    const src = join(sourceRoot, d);
+    const dst = join(target, '.pocket-dev', d);
+    if (existsSync(src)) cpSync(src, dst, { recursive: true, force: true });
+  }
+  const gettingStarted = join(sourceRoot, 'GETTING-STARTED.md');
+  if (existsSync(gettingStarted)) cpSync(gettingStarted, join(target, '.pocket-dev', 'GETTING-STARTED.md'), { force: true });
 
   const deps = checkDependencies();
   spinner.stop();

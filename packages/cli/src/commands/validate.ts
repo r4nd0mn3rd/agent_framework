@@ -4,7 +4,7 @@ import { execSync } from 'node:child_process';
 import chalk from 'chalk';
 
 export async function runValidate(root: string): Promise<void> {
-  const script = join(root, '06-automation', 'scripts', 'framework-check.sh');
+  const script = join(root, '.pocket-dev', '06-automation', 'scripts', 'framework-check.sh');
   if (existsSync(script)) {
     try {
       const out = execSync(`bash "${script}"`, { cwd: root, encoding: 'utf8', stdio: 'pipe' });
@@ -17,7 +17,7 @@ export async function runValidate(root: string): Promise<void> {
     return;
   }
   // Fallback basic validation
-  const required = ['00-constitution', '01-governance', '02-methodology', '04-templates', '.pocket-dev'];
+  const required = ['.pocket-dev', '.pocket-dev/00-constitution', '.pocket-dev/02-methodology', '.pocket-dev/04-templates'];
   let ok = true;
   for (const d of required) {
     if (!existsSync(join(root, d))) { console.log(chalk.red(`✗ Missing: ${d}`)); ok = false; }

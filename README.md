@@ -114,9 +114,9 @@ cd agent_framework
 ./install.sh /path/to/your/project
 ```
 
-Manual install: copy `00-constitution/`, `01-governance/`, `02-methodology/`,
-`03-standards/`, `04-templates/`, `05-checklists/`, `06-automation/`, and
-`.opencode/`, then create `.pocket-dev/{tasks,sessions}/` + `state.json`.
+Installed layout lives under `.pocket-dev/` (framework docs and templates) plus
+`.pocket-dev/state.json`. Manual install: run `./install.sh`, or
+`npm install -g .` then `pocket-dev init .`.
 
 ## Key Documents
 

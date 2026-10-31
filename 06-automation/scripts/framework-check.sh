@@ -315,7 +315,7 @@ function check_framework_structure() {
     log_header "CHECKING FRAMEWORK STRUCTURE"
     
     check_directory_exists "$FRAMEWORK_ROOT" "Root directory" true
-    check_file_exists "$FRAMEWORK_ROOT/README.md" "Root README" true
+    check_file_exists "$FRAMEWORK_ROOT/README.md" "Root README" false
     
     local sections=(
         "00-constitution"
