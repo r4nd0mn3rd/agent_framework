@@ -17,7 +17,7 @@ export async function runValidate(root: string): Promise<void> {
     return;
   }
   // Fallback basic validation
-  const required = ['00-constitution', '01-governance', '02-methodology', '04-templates', '.framework'];
+  const required = ['00-constitution', '01-governance', '02-methodology', '04-templates', '.pocket-dev'];
   let ok = true;
   for (const d of required) {
     if (!existsSync(join(root, d))) { console.log(chalk.red(`✗ Missing: ${d}`)); ok = false; }

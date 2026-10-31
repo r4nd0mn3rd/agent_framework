@@ -1,6 +1,6 @@
-# Home Dash Framework Manager Skill
+# Pocket Dev Framework Manager Skill
 
-> **Skill Name**: `home-dash-framework-manager`  
+> **Skill Name**: `pocket-dev-framework-manager`  
 > **Version**: 1.0.0  
 > **Framework Version**: 1.0.0  
 > **Status**: Ready for Use  
@@ -9,7 +9,7 @@
 
 ## Overview
 
-The **Home Dash Framework Manager Skill** is an **interactive AI assistant** that helps you manage your **Home Dash project development** using the **Solo Agent Development Framework**. It provides a **Jira-like task board**, **project status overview**, **task resumption**, and **framework-guided progression** through all 6 phases of development.
+The **Pocket Dev Framework Manager Skill** is an **interactive AI assistant** that helps you manage your **Pocket Dev project development** using the **Solo Agent Development Framework**. It provides a **Jira-like task board**, **project status overview**, **task resumption**, and **framework-guided progression** through all 6 phases of development.
 
 ---
 
@@ -65,23 +65,23 @@ The **Home Dash Framework Manager Skill** is an **interactive AI assistant** tha
 1. **Place the skill file** in your Vibe/OpenCode skills directory:
    ```bash
    # For Vibe CLI
-   mkdir -p ~/.vibe/skills/home-dash-framework-manager/
-   cp home dash/framework/skill/SKILL.md ~/.vibe/skills/home-dash-framework-manager/
+   mkdir -p ~/.vibe/skills/pocket-dev-framework-manager/
+   cp pocket-dev/framework/skill/SKILL.md ~/.vibe/skills/pocket-dev-framework-manager/
    
    # For OpenCode
-   mkdir -p ~/.opencode/skills/home-dash-framework-manager/
-   cp home dash/framework/skill/SKILL.md ~/.opencode/skills/home-dash-framework-manager/
+   mkdir -p ~/.opencode/skills/pocket-dev-framework-manager/
+   cp pocket-dev/framework/skill/SKILL.md ~/.opencode/skills/pocket-dev-framework-manager/
    ```
 
 2. **Ensure framework directory structure** exists:
    ```bash
-   mkdir -p "home dash/.framework/{state,tasks,sessions}"
-   touch "home dash/.framework/state.json"
+   mkdir -p "pocket-dev/.pocket-dev/{state,tasks,sessions}"
+   touch "pocket-dev/.pocket-dev/state.json"
    ```
 
 3. **Initialize project state** (optional - will be created automatically):
    ```bash
-   cat > "home dash/.framework/state.json" << 'EOF'
+   cat > "pocket-dev/.pocket-dev/state.json" << 'EOF'
    {
      "framework_version": "1.0.0",
      "last_updated": "",
@@ -104,7 +104,7 @@ The **Home Dash Framework Manager Skill** is an **interactive AI assistant** tha
 **Skill**: Displays complete project board with all features and their status
 
 ```
-Framework Board - Home Dash
+Framework Board - Pocket Dev
 ============================
 
 📥 BACKLOG (Phase 0: Ideation)
@@ -250,7 +250,7 @@ Would you like to:
 [Framework Manager] Saving current session...
 ✅ Progress saved for FEA-20261029-001
 
-Framework Board - Home Dash
+Framework Board - Pocket Dev
 ============================
 [... board display ...]
 
@@ -318,7 +318,7 @@ Each agent **follows its specific instructions** from the framework and **enforc
 
 ## Framework Integration
 
-This skill **fully integrates** with the Home Dash Solo Agent Development Framework:
+This skill **fully integrates** with the Pocket Dev Solo Agent Development Framework:
 
 ### ✅ Enforced Principles
 
@@ -349,8 +349,8 @@ This skill **fully integrates** with the Home Dash Solo Agent Development Framew
 ### 📁 File Structure
 
 ```
-home dash/
-├── .framework/
+pocket-dev/
+├── .pocket-dev/
 │   ├── state.json              # Project-wide state
 │   ├── tasks/
 │   │   └── [feature-id].json   # Task-specific data
@@ -491,7 +491,7 @@ Create a `project-config.json` in your project:
 **Symptoms**: No features shown, or old data displayed
 
 **Solutions**:
-1. Check `.framework/state.json` exists
+1. Check `.pocket-dev/state.json` exists
 2. Verify JSON format is valid
 3. Check file permissions
 4. Manually refresh by selecting a task
@@ -501,7 +501,7 @@ Create a `project-config.json` in your project:
 **Symptoms**: Progress lost when switching tasks
 
 **Solutions**:
-1. Check `.framework/sessions/` directory exists
+1. Check `.pocket-dev/sessions/` directory exists
 2. Verify write permissions
 3. Check JSON format of session files
 4. Manually trigger save by returning to overview
@@ -577,25 +577,25 @@ Create a `project-config.json` in your project:
 
 For more information about the framework:
 
-- **📜 Constitution**: `home dash/framework/00-constitution/constitution.md`
+- **📜 Constitution**: `pocket-dev/framework/00-constitution/constitution.md`
   - Core principles that govern all development
 
-- **📋 Process Overview**: `home dash/framework/02-methodology/process-overview.md`
+- **📋 Process Overview**: `pocket-dev/framework/02-methodology/process-overview.md`
   - Complete 6-phase, 6-gate development process
 
-- **🎯 Gate Definitions**: `home dash/framework/02-methodology/checkpoints/`
+- **🎯 Gate Definitions**: `pocket-dev/framework/02-methodology/checkpoints/`
   - Detailed gate criteria and processes
 
-- **💻 Swift Coding Standard**: `home dash/framework/03-standards/swift/coding-standard.md`
+- **💻 Swift Coding Standard**: `pocket-dev/framework/03-standards/swift/coding-standard.md`
   - Complete Swift coding conventions
 
-- **📄 Templates**: `home dash/framework/04-templates/`
+- **📄 Templates**: `pocket-dev/framework/04-templates/`
   - Templates for all framework artifacts
 
-- **✅ Checklists**: `home dash/framework/05-checklists/`
+- **✅ Checklists**: `pocket-dev/framework/05-checklists/`
   - Quality checklists for each phase and gate
 
-- **🤖 Agent Instructions**: `home dash/framework/06-automation/agents/`
+- **🤖 Agent Instructions**: `pocket-dev/framework/06-automation/agents/`
   - Detailed instructions for each agent role
 
 ---
@@ -621,7 +621,7 @@ For issues or questions:
 
 ## License
 
-This skill is part of the **Home Dash Framework** and is provided for use with the Home Dash project. It follows the same **local-first, personal use** principles as the main project.
+This skill is part of the **Pocket Dev Framework** and is provided for use with the Pocket Dev project. It follows the same **local-first, personal use** principles as the main project.
 
 ---
 

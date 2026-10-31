@@ -25,23 +25,23 @@ export function setupIntegration(root: string, integration: Integration): string
   const created: string[] = [];
   if (integration === 'claude') {
     ensureDir(join(root, '.claude', 'commands'));
-    writeFileSync(join(root, '.claude', 'commands', 'framework.md'), CLAUDE_CMD, 'utf8');
-    created.push('.claude/commands/framework.md');
+    writeFileSync(join(root, '.claude', 'commands', 'pocket-dev.md'), CLAUDE_CMD, 'utf8');
+    created.push('.claude/commands/pocket-dev.md');
     if (!existsSync(join(root, 'CLAUDE.md'))) {
       writeFileSync(join(root, 'CLAUDE.md'), CLAUDE_MD, 'utf8');
       created.push('CLAUDE.md');
     }
   } else if (integration === 'opencode') {
-    ensureDir(join(root, '.opencode', 'skills', 'pocket-dev-framework-manager'));
+    ensureDir(join(root, '.opencode', 'skills', 'pocket-dev'));
     ensureDir(join(root, '.opencode', 'commands'));
-    writeFileSync(join(root, '.opencode', 'skills', 'pocket-dev-framework-manager', 'SKILL.md'), OPENCODE_SKILL, 'utf8');
-    writeFileSync(join(root, '.opencode', 'commands', 'framework.md'), OPENCODE_CMD, 'utf8');
-    created.push('.opencode/skills/pocket-dev-framework-manager/SKILL.md');
-    created.push('.opencode/commands/framework.md');
+    writeFileSync(join(root, '.opencode', 'skills', 'pocket-dev', 'SKILL.md'), OPENCODE_SKILL, 'utf8');
+    writeFileSync(join(root, '.opencode', 'commands', 'pocket-dev.md'), OPENCODE_CMD, 'utf8');
+    created.push('.opencode/skills/pocket-dev/SKILL.md');
+    created.push('.opencode/commands/pocket-dev.md');
   } else if (integration === 'vibe') {
-    ensureDir(join(root, '.vibe', 'skills', 'pocket-dev-framework-manager'));
-    writeFileSync(join(root, '.vibe', 'skills', 'pocket-dev-framework-manager', 'SKILL.md'), VIBE_SKILL, 'utf8');
-    created.push('.vibe/skills/pocket-dev-framework-manager/SKILL.md');
+    ensureDir(join(root, '.vibe', 'skills', 'pocket-dev'));
+    writeFileSync(join(root, '.vibe', 'skills', 'pocket-dev', 'SKILL.md'), VIBE_SKILL, 'utf8');
+    created.push('.vibe/skills/pocket-dev/SKILL.md');
   }
   return created;
 }
@@ -58,22 +58,22 @@ export function printUsage(integration: Integration): void {
   console.log('  pocket-dev board              Launch agile board (http://localhost:4173)');
   console.log('\nProject workflow:');
   console.log('  1. Write an idea in Docs/00-idea/idea.md');
-  console.log('  2. Run your AI agent (claude / opencode / vibe) and invoke /framework');
+  console.log('  2. Run your AI agent (claude / opencode / vibe) and invoke /pocket-dev');
   console.log('  3. Follow phases 0-5; track tasks on the board');
   console.log('  4. Run pocket-dev validate before each gate');
   if (integration === 'claude') {
     console.log('\nClaude Code:');
     console.log('  - Open project in Claude Code');
-    console.log('  - Run: /framework');
-    console.log('  - Command file: .claude/commands/framework.md');
+    console.log('  - Run: /pocket-dev');
+    console.log('  - Command file: .claude/commands/pocket-dev.md');
   } else if (integration === 'opencode') {
     console.log('\nOpenCode:');
     console.log('  - Run: opencode');
-    console.log('  - In TUI: /framework');
-    console.log('  - Skill: .opencode/skills/pocket-dev-framework-manager/SKILL.md');
+    console.log('  - In TUI: /pocket-dev');
+    console.log('  - Skill: .opencode/skills/pocket-dev/SKILL.md');
   } else if (integration === 'vibe') {
     console.log('\nMistral Vibe:');
-    console.log('  - Skill installed at .vibe/skills/pocket-dev-framework-manager/SKILL.md');
+    console.log('  - Skill installed at .vibe/skills/pocket-dev/SKILL.md');
     console.log('  - Invoke via vibe skill loader');
   }
   console.log('\nDocs: GETTING-STARTED.md, 07-examples/pocket-dev-module/\n');

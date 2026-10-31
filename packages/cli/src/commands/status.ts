@@ -4,7 +4,7 @@ import { loadState } from '../utils/state.js';
 export async function runStatus(root: string): Promise<void> {
   const state = loadState(root);
   if (!state) {
-    console.log(chalk.yellow('No .framework/state.json found. Run `pocket-dev init` first.'));
+    console.log(chalk.yellow('No .pocket-dev/state.json found. Run `pocket-dev init` first.'));
     return;
   }
   console.log(chalk.bold(`\n📦 ${state.project_name}`));

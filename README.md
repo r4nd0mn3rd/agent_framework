@@ -62,7 +62,7 @@ See `docs/POCKET-DEV.md` for the full reference. Commands:
 
 ![Kanban board](docs/assets/kanban-board.png)
 
-Tasks are loaded from `.framework/state.json`; when empty the board falls back
+Tasks are loaded from `.pocket-dev/state.json`; when empty the board falls back
 to 26 bundled demo tickets across the 6 phases. Tiles are grouped by status
 (Pending, In Progress, Blocked, Completed, Cancelled). Click a tile for open
 items, next steps, and action buttons (Start, Continue, move to next status).
@@ -116,7 +116,7 @@ cd agent_framework
 
 Manual install: copy `00-constitution/`, `01-governance/`, `02-methodology/`,
 `03-standards/`, `04-templates/`, `05-checklists/`, `06-automation/`, and
-`.opencode/`, then create `.framework/{tasks,sessions}/` + `state.json`.
+`.opencode/`, then create `.pocket-dev/{tasks,sessions}/` + `state.json`.
 
 ## Key Documents
 

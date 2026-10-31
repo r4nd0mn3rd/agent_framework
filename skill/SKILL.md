@@ -1,14 +1,14 @@
 ---
-name: home-dash-framework-manager
+name: pocket-dev-framework-manager
 description: |
-  Manage Home Dash project development using the Solo Agent Development Framework.
+  Manage Pocket Dev project development using the Solo Agent Development Framework.
   Provides project status overview, task board navigation, task resumption, and
   framework-guided progression through the 6-phase development process.
 
 triggers:
   - name: overview
     patterns:
-      - "home dash framework"
+      - "pocket-dev framework"
       - "show me the framework"
       - "show framework status"
       - "project status"
@@ -68,16 +68,16 @@ triggers:
     priority: 7
 
 icon: "📊"
-author: "Home Dash Framework v1.0.0"
+author: "Pocket Dev Framework v1.0.0"
 version: "1.0.0"
 framework_version: "1.0.0"
 ---
 
-# Home Dash Framework Manager Skill
+# Pocket Dev Framework Manager Skill
 
 ## Overview
 
-This skill enables you to **manage your Home Dash project development** using the **Solo Agent Development Framework**. It provides:
+This skill enables you to **manage your Pocket Dev project development** using the **Solo Agent Development Framework**. It provides:
 
 - **Project Status Overview**: See all your features/tasks and their current status
 - **Task Board Navigation**: Browse and select tasks like a Jira/Kanban board
@@ -99,7 +99,7 @@ To use this skill, simply ask:
 
 ## Framework Integration
 
-This skill **integrates with** and **enforces** the Home Dash Solo Agent Development Framework:
+This skill **integrates with** and **enforces** the Pocket Dev Solo Agent Development Framework:
 
 - **6 Phases**: Ideation → Discovery → Specification → Design → Implementation → Verification
 - **6 Gates**: Each phase must pass its gate to proceed
@@ -111,9 +111,9 @@ This skill **integrates with** and **enforces** the Home Dash Solo Agent Develop
 ## Data Storage
 
 The skill stores project state in:
-- **Project directory**: `home dash/.framework/state.json`
-- **Task directory**: `home dash/.framework/tasks/`
-- **Session directory**: `home dash/.framework/sessions/`
+- **Project directory**: `pocket-dev/.pocket-dev/state.json`
+- **Task directory**: `pocket-dev/.pocket-dev/tasks/`
+- **Session directory**: `pocket-dev/.pocket-dev/sessions/`
 
 ---
 
@@ -164,8 +164,8 @@ The skill stores project state in:
 
 When you invoke the skill with an overview command:
 
-1. **Load project state** from `.framework/state.json`
-2. **Scan for features** in `home dash/specs/` directory
+1. **Load project state** from `.pocket-dev/state.json`
+2. **Scan for features** in `pocket-dev/specs/` directory
 3. **Parse feature status** from:
    - Feature directories
    - Spec documents (`spec.md`)
@@ -188,7 +188,7 @@ When you invoke the skill with an overview command:
    - Assigned agent (if any)
 6. **Prompt for action**:
    ```
-   Framework Board - Home Dash
+   Framework Board - Pocket Dev
    ============================
    
    📥 BACKLOG (Phase 0: Ideation)
@@ -299,7 +299,7 @@ When you select a task:
 
 When you resume a task:
 
-1. **Restore session state** from `.framework/sessions/[feature-id].json`
+1. **Restore session state** from `.pocket-dev/sessions/[feature-id].json`
 2. **Display current context**:
    ```
    Resuming: FEA-20261029-001 - Health Data Companion
@@ -570,7 +570,7 @@ To create a complete Idea Document, we need:
 
 Let's start with the Problem Statement.
 
-Why do users need a weather widget in Home Dash?
+Why do users need a weather widget in Pocket Dev?
 (Type your answer, or say "skip" to move to next section)
 ```
 
@@ -631,7 +631,7 @@ Which would you like to use as the default?
 We need to define User Stories first.
 
 User Story 1 (P1): View current weather
-- As a: Home Dash user
+- As a: Pocket Dev user
 - I want to: See today's weather when I open the app
 - So that: I can plan my day without checking my phone
 
@@ -862,7 +862,7 @@ You can customize this skill by:
 - Say "help" to see available commands
 
 ### State Not Saved
-- Ensure `.framework/` directory exists and is writable
+- Ensure `.pocket-dev/` directory exists and is writable
 - Check file permissions
 - Verify JSON format of state files
 
@@ -875,12 +875,12 @@ You can customize this skill by:
 
 ## Related Framework Documents
 
-- **Constitution**: `home dash/framework/00-constitution/constitution.md`
-- **Process Overview**: `home dash/framework/02-methodology/process-overview.md`
-- **Swift Standards**: `home dash/framework/03-standards/swift/coding-standard.md`
-- **Spec Template**: `home dash/framework/04-templates/spec-template.md`
-- **Gate Checklists**: `home dash/framework/05-checklists/`
-- **Agent Instructions**: `home dash/framework/06-automation/agents/`
+- **Constitution**: `pocket-dev/framework/00-constitution/constitution.md`
+- **Process Overview**: `pocket-dev/framework/02-methodology/process-overview.md`
+- **Swift Standards**: `pocket-dev/framework/03-standards/swift/coding-standard.md`
+- **Spec Template**: `pocket-dev/framework/04-templates/spec-template.md`
+- **Gate Checklists**: `pocket-dev/framework/05-checklists/`
+- **Agent Instructions**: `pocket-dev/framework/06-automation/agents/`
 
 ---
 

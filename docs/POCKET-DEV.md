@@ -24,7 +24,7 @@ pocket-dev init --integration opencode
 pocket-dev init --integration vibe
 ```
 
-Generates agent-specific files under `.framework/` and prints usage instructions.
+Generates agent-specific files under `.pocket-dev/` and prints usage instructions.
 
 ### `pocket-dev status`
 
@@ -48,7 +48,7 @@ pocket-dev board --port 4177
 pocket-dev board --open
 ```
 
-Tasks are read from `.framework/state.json`; when empty, the board falls back to the bundled demo tasks (26 tickets across 6 phases).
+Tasks are read from `.pocket-dev/state.json`; when empty, the board falls back to the bundled demo tasks (26 tickets across 6 phases).
 
 ## Kanban Board
 

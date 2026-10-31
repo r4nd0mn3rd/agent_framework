@@ -1,6 +1,6 @@
 # Installation & Setup Guide
 
-> **Skill**: Home Dash Framework Manager  
+> **Skill**: Pocket Dev Framework Manager  
 > **Version**: 1.0.0  
 > **Last Updated**: 2026-10-29  
 
@@ -12,17 +12,17 @@
 
 ```bash
 # 1. Create skills directory (if it doesn't exist)
-mkdir -p ~/.vibe/skills/home-dash-framework-manager
+mkdir -p ~/.vibe/skills/pocket-dev-framework-manager
 
 # 2. Copy the skill file
-cp "home dash/framework/skill/SKILL.md" ~/.vibe/skills/home-dash-framework-manager/
+cp "pocket-dev/framework/skill/SKILL.md" ~/.vibe/skills/pocket-dev-framework-manager/
 
 # 3. Create state directory for your project
-mkdir -p "home dash/.framework/{state,tasks,sessions}"
+mkdir -p "pocket-dev/.pocket-dev/{state,tasks,sessions}"
 
 # 4. (Optional) Copy example state files
-cp "home dash/.framework/state.json" "home dash/.framework/state.json.backup"
-cp "home dash/.framework/sessions/sess_20261029_1430_health.json" "home dash/.framework/sessions/"
+cp "pocket-dev/.pocket-dev/state.json" "pocket-dev/.pocket-dev/state.json.backup"
+cp "pocket-dev/.pocket-dev/sessions/sess_20261029_1430_health.json" "pocket-dev/.pocket-dev/sessions/"
 
 # 5. Restart Vibe CLI
 vibe restart
@@ -32,17 +32,17 @@ vibe restart
 
 ```bash
 # 1. Create skills directory
-mkdir -p ~/.opencode/skills/home-dash-framework-manager
+mkdir -p ~/.opencode/skills/pocket-dev-framework-manager
 
 # 2. Copy the skill file
-cp "home dash/framework/skill/SKILL.md" ~/.opencode/skills/home-dash-framework-manager/
+cp "pocket-dev/framework/skill/SKILL.md" ~/.opencode/skills/pocket-dev-framework-manager/
 
 # 3. Create state directory
-mkdir -p "home dash/.framework/{state,tasks,sessions}"
+mkdir -p "pocket-dev/.pocket-dev/{state,tasks,sessions}"
 
 # 4. Copy example state files
-cp "home dash/.framework/state.json" "home dash/.framework/"
-cp "home dash/.framework/sessions/sess_20261029_1430_health.json" "home dash/.framework/sessions/"
+cp "pocket-dev/.pocket-dev/state.json" "pocket-dev/.pocket-dev/"
+cp "pocket-dev/.pocket-dev/sessions/sess_20261029_1430_health.json" "pocket-dev/.pocket-dev/sessions/"
 
 # 5. Restart OpenCode
 opencode restart
@@ -58,20 +58,20 @@ If automatic setup doesn't work, follow these steps:
 
 ```bash
 # Navigate to your project
-cd "home dash"
+cd "pocket-dev"
 
 # Create framework directories
-mkdir -p .framework/state .framework/tasks .framework/sessions
+mkdir -p .pocket-dev/state .pocket-dev/tasks .pocket-dev/sessions
 ```
 
 ### 2. Create Initial State File
 
 ```bash
-cat > .framework/state.json << 'EOF'
+cat > .pocket-dev/state.json << 'EOF'
 {
   "framework_version": "1.0.0",
   "last_updated": "",
-  "project_name": "Home Dash",
+  "project_name": "Pocket Dev",
   "project_description": "Your project description",
   "features": [],
   "stats": {
@@ -112,12 +112,12 @@ EOF
 
 ```bash
 # Check skill file exists
-ls -la ~/.vibe/skills/home-dash-framework-manager/SKILL.md
+ls -la ~/.vibe/skills/pocket-dev-framework-manager/SKILL.md
 # or
-ls -la ~/.opencode/skills/home-dash-framework-manager/SKILL.md
+ls -la ~/.opencode/skills/pocket-dev-framework-manager/SKILL.md
 
 # Check state directory exists
-ls -la "home dash/.framework/state.json"
+ls -la "pocket-dev/.pocket-dev/state.json"
 ```
 
 ---
@@ -242,16 +242,16 @@ Create a `project-config.json` in your project root:
 
 ### State Files Not Created
 
-**Problem**: `.framework/` directory not created
+**Problem**: `.pocket-dev/` directory not created
 
 **Solution**:
 1. Manually create directories:
    ```bash
-   mkdir -p "home dash/.framework/{state,tasks,sessions}"
+   mkdir -p "pocket-dev/.pocket-dev/{state,tasks,sessions}"
    ```
 2. Ensure write permissions:
    ```bash
-   chmod -R 755 "home dash/.framework"
+   chmod -R 755 "pocket-dev/.pocket-dev"
    ```
 
 ### Commands Not Triggering
@@ -281,11 +281,11 @@ To update to a new version:
 
 ```bash
 # 1. Backup current state
-cp "home dash/.framework/state.json" "home dash/.framework/state.json.backup"
-cp -r "home dash/.framework/sessions/" "home dash/.framework/sessions.backup/"
+cp "pocket-dev/.pocket-dev/state.json" "pocket-dev/.pocket-dev/state.json.backup"
+cp -r "pocket-dev/.pocket-dev/sessions/" "pocket-dev/.pocket-dev/sessions.backup/"
 
 # 2. Copy new skill file
-cp "path/to/new/SKILL.md" ~/.vibe/skills/home-dash-framework-manager/
+cp "path/to/new/SKILL.md" ~/.vibe/skills/pocket-dev-framework-manager/
 
 # 3. Restart Vibe/OpenCode
 vibe restart
@@ -303,12 +303,12 @@ vibe --version
 
 ```bash
 # Remove skill
-rm -rf ~/.vibe/skills/home-dash-framework-manager
+rm -rf ~/.vibe/skills/pocket-dev-framework-manager
 # or
-rm -rf ~/.opencode/skills/home-dash-framework-manager
+rm -rf ~/.opencode/skills/pocket-dev-framework-manager
 
 # Remove state files (optional - keeps your data)
-# rm -rf "home dash/.framework"
+# rm -rf "pocket-dev/.pocket-dev"
 
 # Restart Vibe/OpenCode
 vibe restart
@@ -322,10 +322,10 @@ opencode restart
 
 | File | Purpose | Location |
 |------|---------|----------|
-| SKILL.md | Skill definition | `~/.vibe/skills/home-dash-framework-manager/` or `~/.opencode/skills/home-dash-framework-manager/` |
-| state.json | Project state | `home dash/.framework/state.json` |
-| sessions/ | Session states | `home dash/.framework/sessions/` |
-| tasks/ | Task data | `home dash/.framework/tasks/` |
+| SKILL.md | Skill definition | `~/.vibe/skills/pocket-dev-framework-manager/` or `~/.opencode/skills/pocket-dev-framework-manager/` |
+| state.json | Project state | `pocket-dev/.pocket-dev/state.json` |
+| sessions/ | Session states | `pocket-dev/.pocket-dev/sessions/` |
+| tasks/ | Task data | `pocket-dev/.pocket-dev/tasks/` |
 
 ---
 
@@ -358,8 +358,8 @@ opencode restart
 For issues or questions:
 
 1. **Read this documentation** first
-2. **Check the README**: `home dash/framework/skill/README.md`
-3. **Review framework docs**: `home dash/framework/`
+2. **Check the README**: `pocket-dev/framework/skill/README.md`
+3. **Review framework docs**: `pocket-dev/framework/`
 4. **Ask the agent**: Use the skill's help functionality
 
 ---

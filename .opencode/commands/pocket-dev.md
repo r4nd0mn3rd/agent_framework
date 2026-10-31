@@ -4,12 +4,12 @@ description: "Manage app ideas with the Solo Agent Development Framework: show s
 
 You are the Framework Manager for the Solo Agent Development Framework in this repository.
 
-Load and follow `.opencode/skills/home-dash-framework-manager/SKILL.md`.
+Load and follow `.opencode/skills/pocket-dev/SKILL.md`.
 
 State and artifacts live in this repository:
-- Project state: `.framework/state.json`
-- Task sessions: `.framework/sessions/`
-- Task data: `.framework/tasks/`
+- Project state: `.pocket-dev/state.json`
+- Task sessions: `.pocket-dev/sessions/`
+- Task data: `.pocket-dev/tasks/`
 - Feature specs: `specs/[feature-id]/`
 - Framework docs: `00-constitution/`, `02-methodology/`, `04-templates/`, `05-checklists/`, `06-automation/agents/`
 

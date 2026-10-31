@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { parseStateJson, stateToJson, ProjectState } from '@pocket-dev/shared';
 
 export function statePath(root: string): string {
-  return join(root, '.framework', 'state.json');
+  return join(root, '.pocket-dev', 'state.json');
 }
 
 export function loadState(root: string): ProjectState | null {
@@ -17,14 +17,14 @@ export function loadState(root: string): ProjectState | null {
 }
 
 export function saveState(root: string, state: ProjectState): void {
-  const dir = join(root, '.framework');
+  const dir = join(root, '.pocket-dev');
   if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
   state.last_updated = new Date().toISOString();
   writeFileSync(statePath(root), stateToJson(state), 'utf8');
 }
 
 export function ensureFrameworkDirs(root: string): void {
-  for (const sub of ['.framework', '.framework/tasks', '.framework/sessions', 'specs']) {
+  for (const sub of ['.pocket-dev', '.pocket-dev/tasks', '.pocket-dev/sessions', 'specs']) {
     const p = join(root, sub);
     if (!existsSync(p)) mkdirSync(p, { recursive: true });
   }
