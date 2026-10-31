@@ -17,8 +17,9 @@ Gate 2 ensures that:
 3. All **user stories have acceptance scenarios**
 4. All **edge cases are identified**
 5. All **success criteria are measurable**
-6. **No open questions remain**
-7. The specification **aligns with constitution principles**
+6. **Grilling is complete**: intent, description, constraints, and acceptance criteria are clear and comprehensive
+7. **No open questions remain**
+8. The specification **aligns with constitution principles**
 
 **Critical Rule**: Implementation CANNOT start until Gate 2 is passed (Constitution Principle V).
 

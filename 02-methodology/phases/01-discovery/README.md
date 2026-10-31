@@ -101,6 +101,12 @@ By the end of Phase 1, you should have:
 
 ### For Specification Agent
 
+#### 0. Grill Until Intent Is Clear
+- **Action**: Interrogate the idea until **intent, description, constraints, and acceptance criteria** are clear and comprehensive
+- **Method**: Ask relentless, targeted questions; do not accept vague answers
+- **Stop condition**: Every acceptance criterion is testable and every constraint is explicit
+- **Output**: Grilling notes appended to `research.md`
+
 #### 1. Review Approved Idea
 - **Action**: Read and understand the approved idea document
 - **Focus on**:

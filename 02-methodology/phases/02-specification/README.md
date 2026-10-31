@@ -75,6 +75,12 @@ By the end of Phase 2, you should have:
 
 ### For Specification Agent
 
+#### 0. Grill Until Specification Is Clear
+- **Action**: Grill stakeholders until **intent, description, constraints, and acceptance criteria** are clear and comprehensive
+- **Method**: Ask relentless, targeted questions; do not accept vague answers
+- **Stop condition**: Every acceptance criterion is testable and every constraint is explicit; Open Questions is EMPTY
+- **Output**: Grilling notes and resolved questions in `spec.md`
+
 #### 1. Review Phase 1 Deliverables
 - **Action**: Read research.md, constraints.md, risks.md
 - **Focus on**:

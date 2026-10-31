@@ -16,7 +16,8 @@ Gate 1 ensures that:
 2. **All constraints** have been identified and documented
 3. **All risks** have been assessed with mitigation strategies
 4. **All open questions** from Discovery have been resolved
-5. The feature is **ready for specification** with complete information
+5. **Grilling is complete**: intent, description, constraints, and acceptance criteria are clear and comprehensive
+6. The feature is **ready for specification** with complete information
 
 ---
 
