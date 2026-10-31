@@ -81,14 +81,14 @@ export function printUsage(integration: Integration): void {
 
 const CLAUDE_CMD = `# Pocket Dev Framework
 
-Load and follow the Solo Agent Development Framework. Read AGENTS.md and 00-constitution/constitution.md, then help the user drive a feature through phases 0-5.
+Load and follow the Solo Agent Development Framework. Read AGENTS.md and .pocket-dev/00-constitution/constitution.md, then help the user drive a feature through phases 0-5.
 
 Use pocket-dev status / pocket-dev validate / pocket-dev board as needed.
 `;
 
 const CLAUDE_MD = `# Pocket Dev Project
 
-This project uses the Solo Agent Development Framework. See 00-constitution/constitution.md and GETTING-STARTED.md.
+This project uses the Solo Agent Development Framework. See .pocket-dev/00-constitution/constitution.md and .pocket-dev/GETTING-STARTED.md.
 
 Run \`pocket-dev status\` for overview, \`pocket-dev board\` for the agile board.
 `;

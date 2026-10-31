@@ -77,14 +77,12 @@ agent_framework/
 ├── docs/POCKET-DEV.md          # CLI + board guide
 ├── docs/assets/                # screenshots
 ├── packages/                   # CLI, board, shared models
-├── 00-constitution/
-├── 01-governance/
-├── 02-methodology/
-├── 03-standards/
-├── 04-templates/
-├── 05-checklists/
-├── 06-automation/
-├── 07-examples/pocket-dev-module/
+├── .pocket-dev/                # installed framework docs/templates
+│   ├── 00-constitution/
+│   ├── 01-governance/
+│   ├── ...
+│   └── GETTING-STARTED.md
+├── 07-examples/pocket-dev-module/   # (source in repo root)
 └── skill/
 ```
 
@@ -92,15 +90,15 @@ agent_framework/
 
 ### New Features
 
-1. Start with ideation (`02-methodology/`)
+1. Start with ideation (.pocket-dev/`02-methodology/`)
 2. Run discovery checklist
-3. Fill spec template (`04-templates/spec-template.md`)
-4. Pass Gate 0 (`02-methodology/checkpoints/gate-00.md`)
+3. Fill spec template (.pocket-dev/`04-templates/spec-template.md`)
+4. Pass Gate 0 (.pocket-dev/`02-methodology/checkpoints/gate-00.md`)
 5. Progress through phases and gates
 
 ### Agents
 
-1. Load relevant phase docs from `02-methodology/`
+1. Load relevant phase docs from .pocket-dev/`02-methodology/`
 2. Use templates from `04-templates/`
 3. Validate against `05-checklists/`
 4. Follow `03-standards/`
@@ -125,9 +123,9 @@ Installed layout lives under `.pocket-dev/` (framework docs and templates) plus
 | Getting started | `GETTING-STARTED.md` |
 | Framework summary | `SUMMARY.md` |
 | CLI & board | `docs/POCKET-DEV.md` |
-| Constitution | `00-constitution/constitution.md` |
-| Process overview | `02-methodology/process-overview.md` |
-| Spec template | `04-templates/spec-template.md` |
+| Constitution | .pocket-dev/`00-constitution/constitution.md` |
+| Process overview | .pocket-dev/`02-methodology/process-overview.md` |
+| Spec template | .pocket-dev/`04-templates/spec-template.md` |
 | Example module | `07-examples/pocket-dev-module/` |
 
 ## Success Metrics
@@ -140,4 +138,4 @@ Installed layout lives under `.pocket-dev/` (framework docs and templates) plus
 ## Relationship to Constitution
 
 This framework extends the Solo Agent Development Framework constitution.
-`00-constitution/constitution.md` takes precedence on conflict.
+.pocket-dev/`00-constitution/constitution.md` takes precedence on conflict.

@@ -33,7 +33,7 @@ State and artifacts live in this repository:
 - Task sessions: `.pocket-dev/sessions/`
 - Task data: `.pocket-dev/tasks/`
 - Feature specs: `specs/[feature-id]/`
-- Framework docs: `00-constitution/`, `02-methodology/`, `04-templates/`, `05-checklists/`, `06-automation/agents/`
+- Framework docs: `.pocket-dev/00-constitution/`, `.pocket-dev/02-methodology/`, `.pocket-dev/04-templates/`, `.pocket-dev/05-checklists/`, `.pocket-dev/06-automation/agents/`
 
 Behaviour:
 1. If invoked with no arguments, show the framework status board first.
